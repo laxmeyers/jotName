@@ -1,4 +1,5 @@
 import { appState } from "../AppState.js";
+import { Note } from "../Models/Note.js";
 import { notesService } from "../Services/NotesService.js";
 import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
@@ -16,6 +17,12 @@ function _drawFolder(){
 
 function _drawNote(){
     let note = appState.note
+    console.log('note', note)
+    if (note == null){
+        console.log('null', note)
+        setHTML('description', Note.defaultTemplate())
+        return
+    }
 
     setHTML('description', note?.descriptionTemplate)
 }
@@ -28,7 +35,7 @@ export class NotesController {
     constructor(){
         _drawFolder()
         _notesCount()
-        // _drawNote()
+        _drawNote()
         appState.on('note', _drawNote)
         appState.on('notes', _notesCount)
         appState.on('notes', _drawFolder)

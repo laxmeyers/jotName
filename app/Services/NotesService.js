@@ -1,5 +1,6 @@
 import { appState } from "../AppState.js"
 import { Note } from "../Models/Note.js"
+import { Pop } from "../Utils/Pop.js"
 import { saveState } from "../Utils/Store.js"
 
 
@@ -15,6 +16,7 @@ class NotesService {
         appState.note.updated = new Date().toLocaleString()
 
         saveState('notes', appState.notes)
+        Pop.success('Note updated')
 
         appState.emit('note')
     }
@@ -23,7 +25,11 @@ class NotesService {
         let note = appState.notes.findIndex(n => n.id == noteId)
 
         appState.notes.splice(note, 1)
+        appState.note = null
+        saveState('notes', appState.notes)
+        Pop.success('You have successfully removed note!!')
         appState.emit('notes')
+        appState.emit('note')
     }
 
     setPrimaryNote(noteId) {
@@ -48,6 +54,7 @@ class NotesService {
         appState.emit('notes')
 
         saveState('notes', appState.notes)
+        Pop.success('Note File Created!')
     }
 
  }

@@ -44,7 +44,7 @@ export class Pop {
    * {@link https://sweetalert2.github.io/#configuration|Check out Sweet Alerts}
    */
   // @ts-ignore
-  static toast(title = 'Warning!', icon = 'warning', position = 'top-end', timer = 3000, progressBar = true) {
+  static toast(title = 'Warning!', icon = 'warning', position = 'top', timer = 3000, progressBar = true) {
     // @ts-ignore
     Swal.fire({
       title,
