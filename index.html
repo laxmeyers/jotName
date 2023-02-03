@@ -48,15 +48,17 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3 px-3 py-3 bg-primary">
-          <form class="d-flex align-items-center" onsubmit="app.notesController.createNewNote()">
-            <div class="form-floating mb-1">
+          <form class="align-items-center" onsubmit="app.notesController.createNewNote()">
+            <div class="d-flex form-floating align-items-center mb-1">
               <input type="text" class="form-control" name="title" id="title" placeholder="name@example.com" minlength="3" maxlength="15" required>
               <label class="fw-bold" for="title">Title</label>
+              <div><input type="color" class="bg-dark form-control form-control-color" id="color" value="#563d7c" name="color"/></div>
             </div>
-            <input type="color" class="bg-dark form-control form-control-color" id="color" value="#563d7c" name="color">
             <div class="text-end"><button type="submit" class="btn btn-success">Create Note</button></div>
           </form>
-          <div  id="notes"></div>
+          <div  id="notes">
+            
+          </div>
           <!-- STUB folder template -->
           <!-- <div class="d-flex align-items-center selectable my-2"><h1 class="fs-2 pe-3">BigfootHPTENFLP</h1><p class="fw-bolder fs-1" style="color: blue;">&#187;</p></div> -->
       </div>

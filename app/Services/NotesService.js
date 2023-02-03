@@ -7,7 +7,10 @@ import { saveState } from "../Utils/Store.js"
 
 class NotesService {
     setPrimaryNote(noteId) {
-        throw new Error("Method not implemented.")
+        let note = appState.notes.find(n => n.id == noteId)
+
+        // @ts-ignore
+        appState.note = note
     }
     createNewNote(formData) {
         let note = new Note(formData)

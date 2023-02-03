@@ -14,6 +14,12 @@ function _drawFolder(){
     setHTML('notes', template)
 }
 
+function _drawNote(){
+    let note = appState.note
+
+    // setHTML('note', )
+}
+
 export class NotesController {
     constructor(){
         _drawFolder()
@@ -35,6 +41,7 @@ export class NotesController {
     }
 
     setPrimaryNote(noteId){
+        console.log("set");
         try {
             notesService.setPrimaryNote(noteId)
         } catch (error) {
