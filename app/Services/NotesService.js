@@ -11,6 +11,7 @@ class NotesService {
 
         // @ts-ignore
         appState.note = note
+        appState.emit('note')
     }
     createNewNote(formData) {
         let note = new Note(formData)

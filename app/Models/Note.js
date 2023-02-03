@@ -19,6 +19,32 @@ export class Note {
         </div>
         </div>`
     }
+
+    get descriptionTemplate(){
+        return`
+        <div class="row">
+            <div class="col-10 text-light">
+              <h1>${this.title.toUpperCase()}</h1>
+            </div>
+            <div class="col-2 fs-1 text-light"><i class="mdi mdi-delete bg-danger rounded-circle" onclick="app.notesController.removeNote('${this.id}')"></i></div>
+          </div>
+          <div class="row text-light mt-3">
+            <div class="col-3">
+              <div class="row">
+                <div class="col-12">
+                  created on such date
+                </div>
+                <div class="col-12">
+                  updated on certain day
+                </div>
+              </div>
+            </div>
+            <div class="col-9">
+              <div>
+                <textarea name="description" id="description" placeholder="Notes go here..."></textarea>
+              </div>
+            </div>`
+    }
 }
 
 // onclick='app.notesController.setPrimaryNote('${this.id}'

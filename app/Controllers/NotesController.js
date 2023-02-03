@@ -17,7 +17,7 @@ function _drawFolder(){
 function _drawNote(){
     let note = appState.note
 
-    // setHTML('note', )
+    setHTML('description', note?.descriptionTemplate)
 }
 
 function _notesCount(){
@@ -28,6 +28,8 @@ export class NotesController {
     constructor(){
         _drawFolder()
         _notesCount()
+        // _drawNote()
+        appState.on('note', _drawNote)
         appState.on('notes', _notesCount)
         appState.on('notes', _drawFolder)
         // console.log("notes controller");
@@ -54,6 +56,14 @@ export class NotesController {
         console.log("set");
         try {
             notesService.setPrimaryNote(noteId)
+        } catch (error) {
+            Pop.error(error)
+        }
+    }
+
+    removeNote(noteId){
+        try {
+            
         } catch (error) {
             Pop.error(error)
         }
