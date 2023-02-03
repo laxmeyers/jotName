@@ -8,8 +8,10 @@ import { saveState } from "../Utils/Store.js"
 class NotesService {
     updateNotes(updatedBody) {
 
+        // @ts-ignore
         appState.note.description = updatedBody
         
+        // @ts-ignore
         appState.note.updated = new Date().toLocaleString()
 
         saveState('notes', appState.notes)
