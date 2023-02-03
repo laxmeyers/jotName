@@ -2,7 +2,7 @@ import { appState } from "../AppState.js";
 import { notesService } from "../Services/NotesService.js";
 import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
-import { setHTML } from "../Utils/Writer.js";
+import { setHTML, setText } from "../Utils/Writer.js";
 
 
 function _drawFolder(){
@@ -20,21 +20,31 @@ function _drawNote(){
     // setHTML('note', )
 }
 
+function _notesCount(){
+    setText('notes-count', `Total Notes: ${appState.notes.length}`)
+}
+
 export class NotesController {
     constructor(){
         _drawFolder()
+        _notesCount()
+        appState.on('notes', _notesCount)
         appState.on('notes', _drawFolder)
-        console.log("notes controller");
+        // console.log("notes controller");
     }
 
     createNewNote(){
         try {
-            window.event?.preventDefault
+            // @ts-ignore
+            window.event.preventDefault()
             
-            let form = event?.target
+            // @ts-ignore
+            let form = window.event.target
 
             let formData = getFormData(form)
             notesService.createNewNote(formData)
+            // @ts-ignore
+            form.reset()
         } catch (error) {
             Pop.error(error)
         }
