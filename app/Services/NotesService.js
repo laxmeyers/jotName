@@ -13,6 +13,7 @@ class NotesService {
         appState.note = note
         appState.emit('note')
     }
+
     createNewNote(formData) {
         let note = new Note(formData)
         let check = appState.notes.find(n => n.title.toLowerCase() == note.title.toLowerCase())
@@ -21,7 +22,7 @@ class NotesService {
             throw new Error(`Title ${note.title} already exists`)
         }
 
-        
+        note.created = new Date().toLocaleString()
 
         appState.notes.push(note)
         appState.emit('notes')

@@ -7,7 +7,7 @@ export class Note {
         this.description = data.description || ''
         this.color = data.color
         this.created = data.created || ''
-        this.updated = data.updated || ''
+        this.updated = data.updated || 'Not updated yet'
     }
 
     get noteTemplate(){
@@ -32,16 +32,16 @@ export class Note {
             <div class="col-3">
               <div class="row">
                 <div class="col-12">
-                  created on such date
+                  Created: ${this.created}
                 </div>
                 <div class="col-12">
-                  updated on certain day
+                  Update: ${this.updated}
                 </div>
               </div>
             </div>
             <div class="col-9">
               <div>
-                <textarea name="description" id="description" placeholder="Notes go here..."></textarea>
+                <textarea name="description" id="body" placeholder="Notes go here..." onblur="app.notesController.updateNotes()"></textarea>
               </div>
             </div>`
     }
