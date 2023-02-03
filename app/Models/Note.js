@@ -6,6 +6,8 @@ export class Note {
         this.title = data.title
         this.description = data.description || ''
         this.color = data.color
+        this.created = data.created || ''
+        this.updated = data.updated || ''
     }
 
     get noteTemplate(){
