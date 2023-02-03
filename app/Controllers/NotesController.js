@@ -61,9 +61,24 @@ export class NotesController {
         }
     }
 
-    removeNote(noteId){
+    async removeNote(noteId){
         try {
-            
+            let yes = await Pop.confirm("you sure you want to delete this Note?")
+            if(!yes){
+                return
+            }
+            notesService.removeNote(noteId)
+        } catch (error) {
+            Pop.error(error)
+        }
+    }
+
+    updateNotes(){
+        try {
+            let textArea = document.getElementById('body')
+            // @ts-ignore
+            let updatedBody = textArea.value
+            notesService.updateNotes(updatedBody)
         } catch (error) {
             Pop.error(error)
         }

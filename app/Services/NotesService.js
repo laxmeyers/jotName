@@ -6,6 +6,24 @@ import { saveState } from "../Utils/Store.js"
 
 
 class NotesService {
+    updateNotes(updatedBody) {
+
+        appState.note.description = updatedBody
+        
+        appState.note.updated = new Date().toLocaleString()
+
+        saveState('notes', appState.notes)
+
+        appState.emit('note')
+    }
+
+    removeNote(noteId) {
+        let note = appState.notes.findIndex(n => n.id == noteId)
+
+        appState.notes.splice(note, 1)
+        appState.emit('notes')
+    }
+
     setPrimaryNote(noteId) {
         let note = appState.notes.find(n => n.id == noteId)
 
