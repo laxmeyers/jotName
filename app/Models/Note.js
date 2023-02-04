@@ -15,7 +15,7 @@ export class Note {
         <div class="d-flex align-items-center my-2 my-3 justify-content-center bg-dark selectable">
         <div class="text-light d-flex align-items-center ps-3" onclick='app.notesController.setPrimaryNote("${this.id}")'>
         <h1 class="fs-2 pe-3">${this.title}</h1>
-        <p class="fw-bold fs-1 shadow" style="color: ${this.color};">&#187;</p>
+        <p class="fw-bold fs-1 shadow-text" style="color: ${this.color};">&#187;</p>
         </div>
         </div>`
     }
@@ -24,8 +24,8 @@ export class Note {
         return`
         <div class="col-md-9 glass-card ps-5 rounded pb-5" style="border: 5px solid ${this.color};">
             <div class="row">
-                <div class="col-10 text-light">
-                <h1>${this.title.toUpperCase()} <span class="shadow" style="color: ${this.color};">&#187;</span></h1>
+                <div class="col-10 text-light shadow-text">
+                <h1 style="color: ${this.color};">${this.title.toUpperCase()} &#187;</h1>
                 </div>
                 <div class="col-2 fs-1 text-light"><i class="mdi mdi-delete bg-danger rounded-circle selectable" onclick="app.notesController.removeNote('${this.id}')"></i></div>
             </div>
